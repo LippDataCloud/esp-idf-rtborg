@@ -14,7 +14,7 @@ on:
 env:
   # Platforms to build the image for
   BUILD_PLATFORMS: linux/amd64,linux/arm64
-  DOCKERHUB_REPO: https://repository.gateway.uno:5000/idf/espidf
+  DOCKERHUB_REPO: repository.gateway.uno:5000/idf/espidf
 
 jobs:
   docker:
