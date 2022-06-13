@@ -14,7 +14,7 @@ on:
 env:
   # Platforms to build the image for
   BUILD_PLATFORMS: linux/amd64,linux/arm64
-  DOCKERHUB_REPO: https://repository.gateway.uno/idf
+  DOCKERHUB_REPO: https://repository.gateway.uno:5000/idf
 
 jobs:
   docker:
@@ -22,6 +22,11 @@ jobs:
     # if: ${{ github.repository_owner == 'espressif' }}
 
     runs-on: ubuntu-latest
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
     steps:
       # Depending on the branch/tag, set CLONE_BRANCH_OR_TAG variable (used in the Dockerfile
       # as a build arg) and TAG_NAME (used when tagging the image).
