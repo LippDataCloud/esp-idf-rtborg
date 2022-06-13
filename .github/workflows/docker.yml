@@ -14,7 +14,7 @@ on:
 env:
   # Platforms to build the image for
   BUILD_PLATFORMS: linux/amd64,linux/arm64
-  DOCKERHUB_REPO: https://repository.gateway.uno:5000/idf
+  DOCKERHUB_REPO: https://repository.gateway.uno:5000/idf/espidf
 
 jobs:
   docker:
@@ -41,7 +41,8 @@ jobs:
         if: ${{ github.ref_type == 'branch' && startsWith(github.ref_name, 'release/') }}
         run: |
           echo "CLONE_BRANCH_OR_TAG=$GITHUB_REF_NAME" >> $GITHUB_ENV
-          echo "TAG_NAME=release-${GITHUB_REF_NAME##release/}" >> $GITHUB_ENV
+          echo "TAG_NAME=${GITHUB_REF_NAME##release/}" >> $GITHUB_ENV
+        #  echo "TAG_NAME=release-${GITHUB_REF_NAME##release/}" >> $GITHUB_ENV
       - name: Set variables (main branch)
         if: ${{ github.ref_type == 'branch' && github.ref_name == 'master' }}
         run: |
