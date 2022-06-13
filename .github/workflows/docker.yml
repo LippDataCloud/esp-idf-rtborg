@@ -14,7 +14,7 @@ on:
 env:
   # Platforms to build the image for
   BUILD_PLATFORMS: linux/amd64,linux/arm64
-  DOCKERHUB_REPO: repository.gateway.uno:5000/idf/espidf
+  DOCKERHUB_REPO: registry.gateway.uno/idf/espidf
 
 jobs:
   docker:
@@ -25,8 +25,7 @@ jobs:
     services:
       registry:
         image: registry:2
-        ports:
-          - 5000:5000
+ 
     steps:
       # Depending on the branch/tag, set CLONE_BRANCH_OR_TAG variable (used in the Dockerfile
       # as a build arg) and TAG_NAME (used when tagging the image).
