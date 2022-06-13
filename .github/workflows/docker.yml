@@ -14,7 +14,8 @@ on:
 env:
   # Platforms to build the image for
   BUILD_PLATFORMS: linux/amd64,linux/arm64
-  DOCKERHUB_REPO: registry.gateway.uno/espressif/idf
+  # DOCKERHUB_REPO: registry.gateway.uno/espressif/idf
+  DOCKERHUB_REPO: gatewayuno/idf
 
 jobs:
   docker:
@@ -80,10 +81,10 @@ jobs:
         if: ${{ github.ref_type == 'branch' && github.ref_name == 'master' }}
         uses: peter-evans/dockerhub-description@v3
         with:
-          # username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
           # Token based authentication is not supported here:
           # https://github.com/peter-evans/dockerhub-description/issues/10
           # https://github.com/docker/roadmap/issues/115#issuecomment-891694974
-          # password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: ${{ env.DOCKERHUB_REPO }}
           # readme-filepath: ./tools/docker/README.md
