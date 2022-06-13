@@ -14,12 +14,12 @@ on:
 env:
   # Platforms to build the image for
   BUILD_PLATFORMS: linux/amd64,linux/arm64
-  DOCKERHUB_REPO: registry.gateway.uno/idf/espidf
+  DOCKERHUB_REPO: registry.gateway.uno/espressif/idf
 
 jobs:
   docker:
     # Disable the job in forks
-    # if: ${{ github.repository_owner == 'espressif' }}
+    if: ${{ github.repository_owner == 'LippDataCloud' }}
 
     runs-on: ubuntu-latest
     services:
