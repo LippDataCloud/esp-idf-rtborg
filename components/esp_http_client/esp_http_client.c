@@ -1551,6 +1551,21 @@ esp_err_t esp_http_client_get_url(esp_http_client_handle_t client, char *url, co
     return ESP_FAIL;
 }
 
+esp_err_t esp_http_client_get_host(esp_http_client_handle_t client, char *host, const int len)
+{
+    if (client == NULL || host == NULL) {
+        return ESP_ERR_INVALID_ARG;
+    }
+    if (client->connection_info.host && client->connection_info.scheme && client->connection_info.path) {
+        snprintf(host, len, "%s://%s", client->connection_info.scheme, client->connection_info.host);
+        return ESP_OK;
+    } else {
+        ESP_LOGE(TAG, "Failed to get host");
+    }
+    return ESP_FAIL;
+}
+
+
 esp_err_t esp_http_client_get_chunk_length(esp_http_client_handle_t client, int *len)
 {
     if (client == NULL || len == NULL) {

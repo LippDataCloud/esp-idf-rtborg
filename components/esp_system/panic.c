@@ -348,7 +348,7 @@ void esp_panic_handler(panic_info_t *info)
     if (customErrorHandler)
     {
         disable_all_wdts();
-        customErrorHandler(info->frame, info->core, g_panic_abort);
+        customErrorHandler((void*) info->frame, info->core, g_panic_abort);
         panic_print_str("BOOM, BITCH!\r\n");
         esp_panic_handler_reconfigure_wdts();
     }
