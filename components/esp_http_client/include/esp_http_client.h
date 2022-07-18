@@ -589,6 +589,19 @@ esp_err_t esp_http_client_flush_response(esp_http_client_handle_t client, int *l
 esp_err_t esp_http_client_get_url(esp_http_client_handle_t client, char *url, const int len);
 
 /**
+ * @brief Get the host from the client
+ * 
+ * @param[in]      client   The esp_http_client handle
+ * @param[inout]   host     The buffer to store host
+ * @param[in]      len      The buffer length
+ *
+ * @return
+ *     - ESP_OK
+ *     - ESP_FAIL
+ */
+esp_err_t esp_http_client_get_host(esp_http_client_handle_t client, char *host, const int len);
+
+/**
  * @brief          Get Chunk-Length from client
  *
  * @param[in]      client   The esp_http_client handle
